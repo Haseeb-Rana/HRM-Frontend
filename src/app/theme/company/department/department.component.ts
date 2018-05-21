@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Helpers } from '../../../helpers';
 import { DepartmentService } from "../../../_services/department.service";
+// import { ApiService } from "../../../_services/api.service";
 
 // import { Department } from "../../../_models/index";
 
@@ -21,10 +22,11 @@ export class DepartmentComponent implements OnInit {
     public editForm: FormGroup;
     constructor(
         private _departmentService: DepartmentService, 
+        // private _apiService: ApiService,
         private fb: FormBuilder,
         private modalService: NgbModal
     ) {
-
+        // this._apiService.isAdmin();
     }
     ngOnInit() {
         this.form = this.fb.group ( {
@@ -59,10 +61,7 @@ export class DepartmentComponent implements OnInit {
 
     destroy(id){
         this._departmentService.destroy(id).subscribe( result => {
-            let response =  result.json();
-            if(response.success){
-                this.loadAllDepartments();
-            }
+            this.loadAllDepartments();
         }, err => {
             err = err.json();
         });
