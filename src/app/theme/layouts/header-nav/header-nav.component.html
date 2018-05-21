@@ -5,12 +5,17 @@
 			<!-- BEGIN: Brand -->
 			<div class="m-stack__item m-brand  m-brand--skin-dark">
 				<div class="m-stack m-stack--ver m-stack--general">
-					<div class="m-stack__item m-stack__item--middle m-stack__item--center m-brand__logo">
+					<div class="m-stack__item m-stack__item--middle m-brand__logo">
 						<a routerLink="/index" class="m-brand__logo-wrapper">
-							<img alt="" src="./assets/demo/demo3/media/img/logo/logo.png"/>
+							<img alt="" src="./assets/demo/default/media/img/logo/logo_default_dark.png"/>
 						</a>
 					</div>
 					<div class="m-stack__item m-stack__item--middle m-brand__tools">
+						<!-- BEGIN: Left Aside Minimize Toggle -->
+						<a href="javascript:;" id="m_aside_left_minimize_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block">
+							<span></span>
+						</a>
+						<!-- END -->
 						<!-- BEGIN: Responsive Aside Left Menu Toggler -->
 						<a href="javascript:;" id="m_aside_left_offcanvas_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-tablet-and-mobile-inline-block">
 							<span></span>
@@ -37,8 +42,9 @@
 				</button>
 				<div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-dark m-aside-header-menu-mobile--submenu-skin-dark"  >
 					<ul class="m-menu__nav  m-menu__nav--submenu-arrow">
-						<li class="m-menu__item  m-menu__item--submenu m-menu__item--rel" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"   data-menu-submenu-toggle="click" aria-haspopup="true">
+						<li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"  data-menu-submenu-toggle="click" data-redirect="true" aria-haspopup="true">
 							<a  href="#" class="m-menu__link m-menu__toggle">
+								<i class="m-menu__link-icon flaticon-add"></i>
 								<span class="m-menu__link-text">
 									Actions
 								</span>
@@ -49,7 +55,7 @@
 								<span class="m-menu__arrow m-menu__arrow--adjust"></span>
 								<ul class="m-menu__subnav">
 									<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"   aria-haspopup="true">
-										<a  routerLink="/inner" class="m-menu__link">
+										<a  routerLink="/header/actions" class="m-menu__link">
 											<i class="m-menu__link-icon flaticon-file"></i>
 											<span class="m-menu__link-text">
 												Create New Post
@@ -57,7 +63,7 @@
 										</a>
 									</li>
 									<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-										<a  routerLink="/inner" class="m-menu__link">
+										<a  routerLink="/header/actions" class="m-menu__link">
 											<i class="m-menu__link-icon flaticon-diagram"></i>
 											<span class="m-menu__link-title">
 												<span class="m-menu__link-wrap">
@@ -86,42 +92,42 @@
 											<span class="m-menu__arrow"></span>
 											<ul class="m-menu__subnav">
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Latest Orders
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Pending Orders
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Processed Orders
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Delivery Reports
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Payments
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Customers
 														</span>
@@ -143,35 +149,35 @@
 											<span class="m-menu__arrow"></span>
 											<ul class="m-menu__subnav">
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Customer Feedbacks
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Supplier Feedbacks
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Reviewed Feedbacks
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Resolved Feedbacks
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Feedback Reports
 														</span>
@@ -181,7 +187,7 @@
 										</div>
 									</li>
 									<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-										<a  routerLink="/inner" class="m-menu__link">
+										<a  routerLink="/header/actions" class="m-menu__link">
 											<i class="m-menu__link-icon flaticon-users"></i>
 											<span class="m-menu__link-text">
 												Register Member
@@ -193,6 +199,7 @@
 						</li>
 						<li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"  data-menu-submenu-toggle="click" data-redirect="true" aria-haspopup="true">
 							<a  href="#" class="m-menu__link m-menu__toggle">
+								<i class="m-menu__link-icon flaticon-line-graph"></i>
 								<span class="m-menu__link-text">
 									Reports
 								</span>
@@ -212,7 +219,7 @@
 											</h3>
 											<ul class="m-menu__inner">
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-map"></i>
 														<span class="m-menu__link-text">
 															Annual Reports
@@ -220,7 +227,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-user"></i>
 														<span class="m-menu__link-text">
 															HR Reports
@@ -228,7 +235,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-clipboard"></i>
 														<span class="m-menu__link-text">
 															IPO Reports
@@ -236,7 +243,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-graphic-1"></i>
 														<span class="m-menu__link-text">
 															Finance Margins
@@ -244,7 +251,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-graphic-2"></i>
 														<span class="m-menu__link-text">
 															Revenue Reports
@@ -262,7 +269,7 @@
 											</h3>
 											<ul class="m-menu__inner">
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-bullet m-menu__link-bullet--line">
 															<span></span>
 														</i>
@@ -272,7 +279,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-bullet m-menu__link-bullet--line">
 															<span></span>
 														</i>
@@ -282,7 +289,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-bullet m-menu__link-bullet--line">
 															<span></span>
 														</i>
@@ -292,7 +299,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-bullet m-menu__link-bullet--line">
 															<span></span>
 														</i>
@@ -302,7 +309,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-bullet m-menu__link-bullet--line">
 															<span></span>
 														</i>
@@ -312,7 +319,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-bullet m-menu__link-bullet--line">
 															<span></span>
 														</i>
@@ -332,7 +339,7 @@
 											</h3>
 											<ul class="m-menu__inner">
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 															<span></span>
 														</i>
@@ -342,7 +349,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 															<span></span>
 														</i>
@@ -352,7 +359,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 															<span></span>
 														</i>
@@ -362,7 +369,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 															<span></span>
 														</i>
@@ -372,7 +379,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 															<span></span>
 														</i>
@@ -382,7 +389,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 															<span></span>
 														</i>
@@ -402,42 +409,42 @@
 											</h3>
 											<ul class="m-menu__inner">
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Report Adjusments
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Sources & Mediums
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Reporting Settings
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Conversions
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Report Flows
 														</span>
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<span class="m-menu__link-text">
 															Audit & Logs
 														</span>
@@ -451,14 +458,15 @@
 						</li>
 						<li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"  data-menu-submenu-toggle="click" data-redirect="true" aria-haspopup="true">
 							<a  href="#" class="m-menu__link m-menu__toggle">
+								<i class="m-menu__link-icon flaticon-paper-plane"></i>
 								<span class="m-menu__link-title">
 									<span class="m-menu__link-wrap">
 										<span class="m-menu__link-text">
 											Apps
 										</span>
 										<span class="m-menu__link-badge">
-											<span class="m-badge m-badge--brand">
-												3
+											<span class="m-badge m-badge--brand m-badge--wide">
+												new
 											</span>
 										</span>
 									</span>
@@ -470,7 +478,7 @@
 								<span class="m-menu__arrow m-menu__arrow--adjust"></span>
 								<ul class="m-menu__subnav">
 									<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-										<a  routerLink="/inner" class="m-menu__link">
+										<a  routerLink="/header/actions" class="m-menu__link">
 											<i class="m-menu__link-icon flaticon-business"></i>
 											<span class="m-menu__link-text">
 												eCommerce
@@ -490,7 +498,7 @@
 											<span class="m-menu__arrow"></span>
 											<ul class="m-menu__subnav">
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-users"></i>
 														<span class="m-menu__link-text">
 															Active Users
@@ -498,7 +506,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-interface-1"></i>
 														<span class="m-menu__link-text">
 															User Explorer
@@ -506,7 +514,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-lifebuoy"></i>
 														<span class="m-menu__link-text">
 															Users Flows
@@ -514,7 +522,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-graphic-1"></i>
 														<span class="m-menu__link-text">
 															Market Segments
@@ -522,7 +530,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-graphic"></i>
 														<span class="m-menu__link-text">
 															User Reports
@@ -533,7 +541,7 @@
 										</div>
 									</li>
 									<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-										<a  routerLink="/inner" class="m-menu__link">
+										<a  routerLink="/header/actions" class="m-menu__link">
 											<i class="m-menu__link-icon flaticon-map"></i>
 											<span class="m-menu__link-text">
 												Marketing
@@ -541,7 +549,7 @@
 										</a>
 									</li>
 									<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-										<a  routerLink="/inner" class="m-menu__link">
+										<a  routerLink="/header/actions" class="m-menu__link">
 											<i class="m-menu__link-icon flaticon-graphic-2"></i>
 											<span class="m-menu__link-title">
 												<span class="m-menu__link-wrap">
@@ -570,7 +578,7 @@
 											<span class="m-menu__arrow"></span>
 											<ul class="m-menu__subnav">
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-add"></i>
 														<span class="m-menu__link-title">
 															<span class="m-menu__link-wrap">
@@ -587,7 +595,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-signs-1"></i>
 														<span class="m-menu__link-text">
 															File Attributes
@@ -595,7 +603,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-folder"></i>
 														<span class="m-menu__link-text">
 															Folders
@@ -603,7 +611,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item"  data-redirect="true" aria-haspopup="true">
-													<a  routerLink="/inner" class="m-menu__link">
+													<a  routerLink="/header/actions" class="m-menu__link">
 														<i class="m-menu__link-icon flaticon-cogwheel-2"></i>
 														<span class="m-menu__link-text">
 															System Settings
@@ -654,11 +662,9 @@
 							</li>
 							<li class="m-nav__item m-topbar__notifications m-topbar__notifications--img m-dropdown m-dropdown--large m-dropdown--header-bg-fill m-dropdown--arrow m-dropdown--align-center 	m-dropdown--mobile-full-width" data-dropdown-toggle="click" data-dropdown-persistent="true">
 								<a href="#" class="m-nav__link m-dropdown__toggle" id="m_topbar_notification_icon">
-									<span class="m-nav__link-badge m-badge m-badge--accent">
-										3
-									</span>
+									<span class="m-nav__link-badge m-badge m-badge--dot m-badge--dot-small m-badge--danger"></span>
 									<span class="m-nav__link-icon">
-										<i class="flaticon-alert-2"></i>
+										<i class="flaticon-music-2"></i>
 									</span>
 								</a>
 								<div class="m-dropdown__wrapper">
@@ -867,7 +873,7 @@
 								<a href="#" class="m-nav__link m-dropdown__toggle">
 									<span class="m-nav__link-badge m-badge m-badge--dot m-badge--info m--hide"></span>
 									<span class="m-nav__link-icon">
-										<i class="flaticon-clipboard"></i>
+										<i class="flaticon-share"></i>
 									</span>
 								</a>
 								<div class="m-dropdown__wrapper">
@@ -920,10 +926,13 @@
 									</div>
 								</div>
 							</li>
-							<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
+							<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
 								<a href="#" class="m-nav__link m-dropdown__toggle">
 									<span class="m-topbar__userpic">
-										<img src="./assets/app/media/img/users/user3.jpg" alt=""/>
+										<img src="./assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt=""/>
+									</span>
+									<span class="m-topbar__username m--hide">
+										Nick
 									</span>
 								</a>
 								<div class="m-dropdown__wrapper">
@@ -932,14 +941,14 @@
 										<div class="m-dropdown__header m--align-center" style="background: url(./assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
 											<div class="m-card-user m-card-user--skin-dark">
 												<div class="m-card-user__pic">
-													<img src="./assets/app/media/img/users/user3.jpg" alt=""/>
+													<img src="./assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt=""/>
 												</div>
 												<div class="m-card-user__details">
 													<span class="m-card-user__name m--font-weight-500">
-														Lisa Strong
+														Mark Andre
 													</span>
 													<a href="" class="m-card-user__email m--font-weight-300 m-link">
-														lisa.strong@gmail.com
+														mark.andre@gmail.com
 													</a>
 												</div>
 											</div>
@@ -953,7 +962,7 @@
 														</span>
 													</li>
 													<li class="m-nav__item">
-														<a routerLink="/profile" class="m-nav__link">
+														<a routerLink="/header/profile" class="m-nav__link">
 															<i class="m-nav__link-icon flaticon-profile-1"></i>
 															<span class="m-nav__link-title">
 																<span class="m-nav__link-wrap">
@@ -970,7 +979,7 @@
 														</a>
 													</li>
 													<li class="m-nav__item">
-														<a routerLink="/profile" class="m-nav__link">
+														<a routerLink="/header/profile" class="m-nav__link">
 															<i class="m-nav__link-icon flaticon-share"></i>
 															<span class="m-nav__link-text">
 																Activity
@@ -978,7 +987,7 @@
 														</a>
 													</li>
 													<li class="m-nav__item">
-														<a routerLink="/profile" class="m-nav__link">
+														<a routerLink="/header/profile" class="m-nav__link">
 															<i class="m-nav__link-icon flaticon-chat-1"></i>
 															<span class="m-nav__link-text">
 																Messages
@@ -987,7 +996,7 @@
 													</li>
 													<li class="m-nav__separator m-nav__separator--fit"></li>
 													<li class="m-nav__item">
-														<a routerLink="/profile" class="m-nav__link">
+														<a routerLink="/header/profile" class="m-nav__link">
 															<i class="m-nav__link-icon flaticon-info"></i>
 															<span class="m-nav__link-text">
 																FAQ
@@ -995,7 +1004,7 @@
 														</a>
 													</li>
 													<li class="m-nav__item">
-														<a routerLink="/profile" class="m-nav__link">
+														<a routerLink="/header/profile" class="m-nav__link">
 															<i class="m-nav__link-icon flaticon-lifebuoy"></i>
 															<span class="m-nav__link-text">
 																Support
@@ -1017,7 +1026,7 @@
 							<li id="m_quick_sidebar_toggle" class="m-nav__item">
 								<a href="#" class="m-nav__link m-dropdown__toggle">
 									<span class="m-nav__link-icon">
-										<i class="flaticon-menu-button"></i>
+										<i class="flaticon-grid-menu"></i>
 									</span>
 								</a>
 							</li>
