@@ -3,9 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Helpers } from '../../../helpers';
 import { EmployeeService } from "../../../_services/employee.service";
-// import { ApiService } from "../../../_services/api.service";
-
-// import { Department } from "../../../_models/index";
+import { DesignationService } from "../../../_services/designation.service";
+import { DepartmentService } from "../../../_services/department.service";
 
 
 @Component({
@@ -17,17 +16,35 @@ export class EmployeeComponent implements OnInit {
 
     public employees: any;
     modaal:any;
-
+    public noVal = null;
+    public designations: any;
+    public departments: any = [];
     public form: FormGroup;
     public editForm: FormGroup;
     constructor(
-        private _employeeService: EmployeeService, 
+        private _employeeService: EmployeeService, private _departmentService: DepartmentService, private _designationService: DesignationService,
         // private _apiService: ApiService,
         private fb: FormBuilder,
         private modalService: NgbModal
     ) {
         // this._apiService.isAdmin();
+        this.loadAllDepartments();
+        this.loadAllDesignations();
     }
+    loadAllDepartments(){
+        this._departmentService.list().subscribe(departments => {
+            if(departments.success)
+                this.departments = departments.data;
+        });
+    }
+
+    loadAllDesignations(){
+        this._designationService.list().subscribe(designations => {
+            if(designations.success)
+                this.designations = designations.data;
+        });
+    }
+
     ngOnInit() {
         this.form = this.fb.group ( {
             first_name: [null , Validators.compose ( [ Validators.required ] )],
@@ -35,7 +52,9 @@ export class EmployeeComponent implements OnInit {
             gender: [null , Validators.compose ( [ Validators.required ] )],
             email: [null , Validators.compose ( [ Validators.required ] )],
             password: [null , Validators.compose ( [ Validators.required ] )],
-            salary: [null , Validators.compose ( [ Validators.required ] )]
+            salary: [null , Validators.compose ( [ Validators.required ] )],
+            designation: [null , Validators.compose ( [ Validators.required ] )],
+            department: [null , Validators.compose ( [ Validators.required ] )]
             
         });
         this.editForm = this.fb.group ( {
@@ -86,7 +105,9 @@ export class EmployeeComponent implements OnInit {
             last_name: this.form.value.last_name,
             gender: this.form.value.gender,
             email: this.form.value.email,
-            password: this.form.value.password
+            password: this.form.value.password,
+            department: this.form.value.department,
+            designation: this.form.value.designation
         };
 
         this._employeeService.create(employee).subscribe( result => {

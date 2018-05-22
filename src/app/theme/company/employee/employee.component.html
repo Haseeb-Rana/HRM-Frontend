@@ -70,10 +70,11 @@
                             <th>#</th>
                             <th>First Name</th>
                             <th>Last Name</th>
+                            <th>Department</th>
+                            <th>Designation</th>
                             <th>Gender</th>
                             <th>Email</th>
                             <th>Salary</th>
-                            <th>ID</th>
                             <th>Actions</th>
                         </thead>
                         <tbody>
@@ -81,10 +82,11 @@
                                 <td>{{i + 1}}</td>
                                 <td>{{employee.first_name}}</td>
                                 <td>{{employee.last_name}}</td>
+                                <td>{{employee.department.name || '--'}}</td>
+                                <td>{{employee.designation.name || '--'}}</td>
                                 <td>{{employee.gender}}</td>
                                 <td>{{employee.email}}</td>
                                 <td>{{employee.salary}}</td>
-                                <td>{{employee.id}}</td>
                                 <td data-field="Actions" class="m-datatable__cell">
                                     <span style="overflow: visible; width: 110px;">			
                                         <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="View ">
@@ -104,70 +106,91 @@
 
         </div>
     </div>
-    <!--end: =============================================== :Portlet-->
-    <!--begin::Modal-->
-    <div class="modal fade" id="m_modal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        New Employee
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">
-							&times;
-						</span>
-					</button>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                        survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                        with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-						Close
-					</button>
-                    <button type="button" class="btn btn-primary">
-						Save
-					</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<ng-template #content let-c="close" let-d="dismiss">
-    <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
-        <div class="modal-header">
-            <h6 class="modal-title text-uppercase">Add New Employee</h6>
-            <button type="button" class="close" aria-label="Close" (click)="closeX('Cross click')">
+
+    <ng-template #content let-c="close" let-d="dismiss">
+        <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+            <div class="modal-header">
+                <h6 class="modal-title text-uppercase">New Employee</h6>
+                <button type="button" class="close" aria-label="Close" (click)="closeX('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-12">
-                    <label>Employee Record</label>
-                    <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['first_name'].hasError('required') && form.controls['first_name'].touched}">
-                        <input type="text" class="form-control" placeholder="Frist name" [formControl]="form.controls['first_name']" [ngClass]="{'form-control-danger': form.controls['first_name'].hasError('required') && form.controls['first_name'].touched}" />
-                        <input type="text" class="form-control" placeholder="Last name" [formControl]="form.controls['last_name']" [ngClass]="{'form-control-danger': form.controls['last_name'].hasError('required') && form.controls['last_name'].touched}" />
-                        <input type="text" class="form-control" placeholder="Gender" [formControl]="form.controls['gender']" [ngClass]="{'form-control-danger': form.controls['gender'].hasError('required') && form.controls['gender'].touched}" />
-                        <input type="text" class="form-control" placeholder="Salary" [formControl]="form.controls['salary']" [ngClass]="{'form-control-danger': form.controls['salary'].hasError('required') && form.controls['salary'].touched}" />
-                        <input type="email" class="form-control" placeholder="Email" [formControl]="form.controls['email']" [ngClass]="{'form-control-danger': form.controls['email'].hasError('required') && form.controls['email'].touched}" />
-                        <input type="password" class="form-control" placeholder="Password" [formControl]="form.controls['password']" [ngClass]="{'form-control-danger': form.controls['password'].hasError('required') && form.controls['password'].touched}" />
-                        
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <label>First Name</label>
+                        <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['first_name'].hasError('required') && form.controls['first_name'].touched}">
+                            <input type="text" class="form-control" placeholder="Frist name" [formControl]="form.controls['first_name']" [ngClass]="{'form-control-danger': form.controls['first_name'].hasError('required') && form.controls['first_name'].touched}" />
+                            <div class="form-control-feedback" *ngIf="form.controls['first_name'].hasError('required') && form.controls['first_name'].touched">First name is required.</div>
+                        </fieldset>
+                    </div>
+                    <div class='col-6'>
+                        <label>Last Name</label>
+                        <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['last_name'].hasError('required') && form.controls['last_name'].touched}">
+                            <input type="text" class="form-control" placeholder="Last name" [formControl]="form.controls['last_name']" [ngClass]="{'form-control-danger': form.controls['last_name'].hasError('required') && form.controls['last_name'].touched}" />
+                            <div class="form-control-feedback" *ngIf="form.controls['last_name'].hasError('required') && form.controls['last_name'].touched">Last name is required.</div>
+                        </fieldset>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group m-form__group">
+                            <label for="exampleSelect1">
+                                    Department
+                                </label>
+                            <select class="form-control m-input m-input--air" id="exampleSelect2" [formControl]="form.controls['department']" [ngClass]="{'has-danger': form.controls['department'].hasError('required') && form.controls['department'].touched}">
+                                    <option disabled selected [value]=noVal>Select Department</option>
+                                    <option *ngFor="let department of departments" value="{{department.id}}" >{{department.name}}</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group m-form__group">
+                            <label for="exampleSelect1">
+                                        Designation
+                                    </label>
+                            <select class="form-control m-input m-input--air" id="exampleSelect2" [formControl]="form.controls['designation']" [ngClass]="{'has-danger': form.controls['designation'].hasError('required') && form.controls['designation'].touched}">
+                                        <option disabled selected [value]=noVal>Select Designation</option>
+                                        <option *ngFor="let designation of designations" value="{{designation.id}}" >{{designation.name}}</option>
+                                    </select>
+                        </div>
+                    </div>
+                    <div class='col-6'>
+                        <label>Gender</label>
+                        <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['gender'].hasError('required') && form.controls['gender'].touched}">
+                            <input type="text" class="form-control" placeholder="Gender" [formControl]="form.controls['gender']" [ngClass]="{'form-control-danger': form.controls['gender'].hasError('required') && form.controls['gender'].touched}" />
 
-                        
-                        <div class="form-control-feedback" *ngIf="form.controls['first_name'].hasError('required') && form.controls['first_name'].touched">Employee First name is required.</div>
-                    </fieldset>
+                            <div class="form-control-feedback" *ngIf="form.controls['gender'].hasError('required') && form.controls['gender'].touched">Gender is required.</div>
+                        </fieldset>
+                    </div>
+                    <div class='col-6'>
+                        <label>Salary</label>
+                        <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['salary'].hasError('required') && form.controls['salary'].touched}">
+                            <input type="text" class="form-control" placeholder="Salary" [formControl]="form.controls['salary']" [ngClass]="{'form-control-danger': form.controls['salary'].hasError('required') && form.controls['salary'].touched}" />
+
+                            <div class="form-control-feedback" *ngIf="form.controls['salary'].hasError('required') && form.controls['salary'].touched">Salary is required.</div>
+
+                        </fieldset>
+                    </div>
+                    <div class='col-6'>
+                        <label>Email</label>
+                        <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['email'].hasError('required') && form.controls['email'].touched}">
+                            <input type="email" class="form-control" placeholder="Email" [formControl]="form.controls['email']" [ngClass]="{'form-control-danger': form.controls['email'].hasError('required') && form.controls['email'].touched}" />
+
+                            <div class="form-control-feedback" *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched">Eamil is required.</div>
+                        </fieldset>
+                    </div>
+                    <div class='col-6'>
+                        <label>Password</label>
+                        <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['password'].hasError('required') && form.controls['password'].touched}">
+                            <input type="password" class="form-control" placeholder="Password" [formControl]="form.controls['password']" [ngClass]="{'form-control-danger': form.controls['password'].hasError('required') && form.controls['password'].touched}" />
+                            <div class="form-control-feedback" *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched">Password is required.</div>
+
+                        </fieldset>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button title="Close" type="button" class="btn btn-secondary" (click)="closeButton('Close click')">Close</button>
-            <button title="Create" class="btn btn-primary" type="submit" [disabled]="!form.valid">Create</button>
-        </div>
-    </form>
-</ng-template>
+            <div class="modal-footer">
+                <button title="Close" type="button" class="btn btn-secondary" (click)="closeButton('Close click')">Close</button>
+                <button title="Create" class="btn btn-primary" type="submit" [disabled]="!form.valid">Create</button>
+            </div>
+        </form>
+    </ng-template>
