@@ -47,6 +47,7 @@ export class DepartmentComponent implements OnInit {
     }
 
     open(content) {
+        this.form.value.name = "Faizan"
         this.modaal = this.modalService.open(content);
     }
 

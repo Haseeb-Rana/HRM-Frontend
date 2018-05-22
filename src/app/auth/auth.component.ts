@@ -63,7 +63,17 @@ export class AuthComponent implements OnInit {
 
     signup() {
         this.loading = true;
-        this._userService.create(this.model)
+        let user = {
+            first_name: this.model.first_name,
+            last_name: this.model.last_name,
+            gender: this.model.gender,
+            email: this.model.email,
+            password: this.model.password,
+            company: {
+                name: this.model.company_name
+            }
+        };
+        this._authService.signup(user)
             .subscribe(
             data => {
                 this.showAlert('alertSignin');

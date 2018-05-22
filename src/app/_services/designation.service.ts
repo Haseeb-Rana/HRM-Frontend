@@ -8,7 +8,7 @@ export class DesignationService {
 
   list(){
      
-    return this.http.get('/departments/designations/3');
+    return this.http.get('/departments/designations/');
 }
 
 create(designation){

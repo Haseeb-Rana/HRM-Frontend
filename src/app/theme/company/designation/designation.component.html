@@ -72,16 +72,16 @@
                             <th>Actions</th>
                         </thead>
                         <tbody>
-                            <tr *ngIf="designations; let i = index">
+                            <tr *ngFor="let designation of designations; let i = index">
                                 <td>{{i+1}}</td>
-                                <td>{{designations.name}}</td>
-                                <td>{{designations.department.name}}</td>
+                                <td>{{designation.name}}</td>
+                                <td>{{designation.department.name}}</td>
                                 <td data-field="Actions" class="m-datatable__cell">
                                     <span style="overflow: visible; width: 110px;">			
                                         <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="View ">
                                             <i class="la la-edit"></i>
                                         </a>
-                                        <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete" (click)="destroy(designations.id)">
+                                        <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete" (click)="destroy(designation.id)">
                                             <i class="la la-trash"></i>
                                         </a>
                                     </span>
@@ -94,65 +94,54 @@
 
         </div>
     </div>
-    <!--end: =============================================== :Portlet-->
-    <!--begin::Modal-->
-    <div class="modal fade" id="m_modal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        New Department
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">
-							&times;
-						</span>
-					</button>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                        survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                        with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-						Close
-					</button>
-                    <button type="button" class="btn btn-primary">
-						Save
-					</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<ng-template #content let-c="close" let-d="dismiss">
-    <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
-        <div class="modal-header">
-            <h6 class="modal-title text-uppercase">Add New Designation</h6>
-            <button type="button" class="close" aria-label="Close" (click)="closeX('Cross click')">
+
+    <ng-template #content let-c="close" let-d="dismiss">
+        <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+            <div class="modal-header">
+                <h6 class="modal-title text-uppercase">New Designation</h6>
+                <button type="button" class="close" aria-label="Close" (click)="closeX('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-12">
-                    <label>Name</label>
-                    <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['name'].hasError('required') && form.controls['name'].touched}">
-                        <input type="text" class="form-control" placeholder="Designation name" [formControl]="form.controls['name']" [ngClass]="{'form-control-danger': form.controls['name'].hasError('required') && form.controls['name'].touched}" />
-                        <input type="text" class="form-control" placeholder="Designation department" [formControl]="form.controls['department']" [ngClass]="{'form-control-danger': form.controls['department'].hasError('required') && form.controls['department'].touched}" />
-                        <div class="form-control-feedback" *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched">Department name is required.</div>
-                    </fieldset>
-                </div>
-                
             </div>
-        </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <label>Name</label>
+                        <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['name'].hasError('required') && form.controls['name'].touched}">
+                            <input type="text" class="form-control" placeholder="Designation name" [formControl]="form.controls['name']" [ngClass]="{'form-control-danger': form.controls['name'].hasError('required') && form.controls['name'].touched}" />
+                            <div class="form-control-feedback" *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched">Designation name is required.</div>
+                        </fieldset>
+                        <!-- <label>Department <small class="text-red">*</small></label>
+                        <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['department_id'].hasError('required') && form.controls['department_id'].touched}">
+                            <select class="form-control" id="exampleSelect2" [formControl]="form.controls['department_id']" [ngClass]="{'has-danger': form.controls['department_id'].hasError('required') && form.controls['department_id'].touched}">
+                            <option disabled selected [value]=noVal>Select Department</option>
+                            <option *ngFor="let department of departments" value="{{department.id}}" >{{department.name}}</option>
+                          </select>
+                            <div class="form-control-feedback" *ngIf="form.controls['department_id'].hasError('required') && form.controls['department_id'].touched">Department is required.</div>
+                        </fieldset> -->
+                    </div>
+                    <div class="col-12">
+                        <label>Department</label>
+                        <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['department'].hasError('required') && form.controls['department'].touched}">
+                            <input type="text" class="form-control" placeholder="Department department" [formControl]="form.controls['department']" [ngClass]="{'form-control-danger': form.controls['department'].hasError('required') && form.controls['department'].touched}" />
+                            <div class="form-control-feedback" *ngIf="form.controls['department'].hasError('required') && form.controls['department'].touched">Designation name is required.</div>
+                        </fieldset>
+                        <!-- <label>Department <small class="text-red">*</small></label>
+                        <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['department_id'].hasError('required') && form.controls['department_id'].touched}">
+                            <select class="form-control" id="exampleSelect2" [formControl]="form.controls['department_id']" [ngClass]="{'has-danger': form.controls['department_id'].hasError('required') && form.controls['department_id'].touched}">
+                            <option disabled selected [value]=noVal>Select Department</option>
+                            <option *ngFor="let department of departments" value="{{department.id}}" >{{department.name}}</option>
+                          </select>
+                            <div class="form-control-feedback" *ngIf="form.controls['department_id'].hasError('required') && form.controls['department_id'].touched">Department is required.</div>
+                        </fieldset> -->
+                    </div>
 
-        <div class="modal-footer">
-            <button title="Close" type="button" class="btn btn-secondary" (click)="closeButton('Close click')">Close</button>
-            <button title="Create" class="btn btn-primary" type="submit" [disabled]="!form.valid">Create</button>
-        </div>
-    </form>
-</ng-template>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button title="Close" type="button" class="btn btn-secondary" (click)="closeButton('Close click')">Close</button>
+                <button title="Create" class="btn btn-primary" type="submit" [disabled]="!form.valid">Create</button>
+            </div>
+        </form>
+    </ng-template>

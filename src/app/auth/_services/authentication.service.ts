@@ -27,6 +27,20 @@ export class AuthenticationService {
             });
     }
 
+    signup(user) {
+        return this.http.post(this.apiService.getUrl('/signup'), user)
+            .map((response: Response) => {
+                let user = response.json();
+                console.log("Current User is: " + JSON.stringify(user, null, 2));
+                this.isLoggedIn = true;
+                // console.log("Current User is: " + JSON.stringify(user, null, 2));
+                if (user && user.success && user.data && user.data.auth_token) {
+                    this.setCredentials(user.data.auth_token, user.data);
+                }
+                return user;
+            });
+    }
+
 
     public token: string;
     public isLoggedIn: boolean;

@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Headers, Http, RequestOptions, Response } from "@angular/http";
+import { Router } from '@angular/router';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -9,7 +10,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class ApiService {
 
-    constructor(private http: Http) { }
+    constructor(private router: Router ,private http: Http) { }
 
    
     get(url) {
@@ -33,10 +34,7 @@ export class ApiService {
 
     private setHeaders(): RequestOptions {
         let currentUser = this.getCurrentUser();
-        // let token = this.getAuthToken();
         let token = this.getAuthToken();
-        // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTI2ODIwOTg5LCJleHAiOjE1Mzk3ODA5ODl9.MkY-qKwTygUfkjy5loPljQ8rmTi4Z-65dORamwxMqxc";
-
         let headers = new Headers({ 'Accept': 'application/json' });
         if (currentUser && token) {
             console.log("Headers Token is : " + token);
@@ -74,9 +72,20 @@ export class ApiService {
     }
     
     isAdmin(){
-        let user = this.getCurrentUser();
-        // if(user && user.owner !== "")
-        //     return true;
-        // return false;
+        return true;
+        // let user = this.getCurrentUser();
+
+        // if(user){
+        //     this.router.navigate(['index']);
+        // }
+        // // if(user && user.owner !== "")
+        // //     return true;
+        // // return false;
+    }
+
+    redirectIfNotAdmin(){
+        if(this.isAdmin()){
+            this.router.navigate(['index']);
+        }
     }
 }

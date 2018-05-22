@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { Helpers } from '../../../helpers';
+import { ApiService } from "../../../_services/api.service";
 
 declare let mLayout: any;
 @Component({
@@ -9,9 +10,10 @@ declare let mLayout: any;
 })
 export class HeaderNavComponent implements OnInit, AfterViewInit {
 
+    public currentUser: any;
 
-    constructor() {
-
+    constructor(private _apiService: ApiService) {
+        this.currentUser = this._apiService.getCurrentUser();
     }
     ngOnInit() {
 

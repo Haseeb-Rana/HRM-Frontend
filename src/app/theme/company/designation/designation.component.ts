@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Helpers } from '../../../helpers';
 import { DesignationService } from "../../../_services/designation.service";
+import { DepartmentService } from "../../../_services/department.service";
+
 import { Department } from '../../../_models/department';
 
 
@@ -17,8 +19,10 @@ export class DesignationComponent implements OnInit {
     modaal:any;
     public form: FormGroup;
     public editForm: FormGroup;
+    public departments: any = [];
+    public noVal = null;
 
-    constructor(private _designationService: DesignationService,
+    constructor(private _departmentService: DepartmentService, private _designationService: DesignationService,
         private fb: FormBuilder,
         private modalService: NgbModal) {
 
@@ -32,16 +36,23 @@ export class DesignationComponent implements OnInit {
             name: ['']
         });
         this.loadAllDepartments();
+        this.loadAllDesignations();
 
     }
 
     loadAllDepartments(){
+        this._departmentService.list().subscribe(departments => {
+            if(departments.success)
+                this.departments = departments.data;
+        });
+    }
+
+    loadAllDesignations(){
         this._designationService.list().subscribe(designations => {
             if(designations.success)
                 this.designations = designations.data;
         });
     }
-
     open(content) {
         this.modaal = this.modalService.open(content);
     }
@@ -59,7 +70,7 @@ export class DesignationComponent implements OnInit {
     destroy(id){
        // console.log(id);
         this._designationService.destroy(id).subscribe( result => {
-            this.loadAllDepartments();
+            this.loadAllDesignations();
         }, err => {
             err = err.json();
         });
@@ -71,14 +82,14 @@ export class DesignationComponent implements OnInit {
             name: this.form.value.name,
             department: this.form.value.department
         };
-            console.log(designation);
+        console.log(designation);
         this._designationService.create(designation).subscribe( result => {
             let response =  result.json();
             if(response.success){
                 // this.notify.successNotify(response.message);
                 this.modaal.close();
                 this.form.reset();
-                this.loadAllDepartments();
+                this.loadAllDesignations();
             }
             else if(!response.success) {
                 for(let i=0;i<response.errors.length;i++){
