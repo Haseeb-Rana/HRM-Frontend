@@ -1,0 +1,203 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <!-- <h3 class="m-subheader__title m-subheader__title--separator">
+                Job
+            </h3> -->
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a href="/index" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="/index" class="m-nav__link">
+                        <span class="m-nav__link-text">
+							Dashboard
+						</span>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="#" class="m-nav__link">
+                        <span class="m-nav__link-text">
+							Job
+						</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push">
+
+                <a class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air" href="#" ng-reflect-href="#" (click)="open(content)">
+                    <span>
+                        <i class="flaticon-add"></i>
+                        <span>
+                            New Job
+                        </span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: Subheader -->
+<div class="m-content">
+
+    <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        List of All Job
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet__body">
+
+            <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
+                <div class="row align-items-center">
+                    <table class="table">
+                        <thead>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Short Description</th>
+                            <th>Long Description</th>
+                            <th>Number of positions</th>
+                            <th>Gender</th>
+                            <th>Closing date</th>
+                            <th>Is publish</th>
+                            <th>Max Experience</th>
+                            <th>Gender Preference</th>
+                            <th> Applicant Count</th>
+                            <th> Department Id</th>
+                            <th>Designation id</th>
+                            <th>Job Type Id</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let job of jobs; let i = index">
+                                <td>{{i + 1}}</td>
+                                <td>{{job.title}}</td>
+                                <td>{{job.short_description}}</td>
+                                <td>{{job.long_description}}</td>
+                                <td>{{job.number_of_position}}</td>
+                                <td>{{job.gender}}</td>
+                                <td>{{job.closing_date}}</td>
+                                <td>{{job.is_publish}}</td>
+                                <td>{{job.max_experience}}</td>
+                                <td>{{job.gender_preferences}}</td>
+                                <td>{{job.applicants_count}}</td>
+                                <td>{{job.department}}</td>
+                                <td>{{job.designation}}</td>
+                                <td>{{job.job_type_id}}</td>
+                                <td data-field="Actions" class="m-datatable__cell">
+                                    <span style="overflow: visible; width: 110px;">			
+                                        <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="View ">
+                                            <i class="la la-edit"></i>
+                                        </a>
+                                        <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete" (click)="destroy(job.id)">
+                                            <i class="la la-trash"></i>
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--end: =============================================== :Portlet-->
+    <!--begin::Modal-->
+    <div class="modal fade" id="m_modal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        New Job
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">
+							&times;
+						</span>
+					</button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+                        survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                        with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+						Close
+					</button>
+                    <button type="button" class="btn btn-primary">
+						Save
+					</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+    <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+        <div class="modal-header">
+            <h6 class="modal-title text-uppercase">Add New Job</h6>
+            <button type="button" class="close" aria-label="Close" (click)="closeX('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-12">
+                    <label>Job Record</label>
+                    <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['title'].hasError('required') && form.controls['title'].touched}">
+                        <input type="text" class="form-control" placeholder="Title" [formControl]="form.controls['title']" [ngClass]="{'form-control-danger': form.controls['title'].hasError('required') && form.controls['title'].touched}" />
+                        <input type="text" class="form-control" placeholder="Short Description" [formControl]="form.controls['short_description']" [ngClass]="{'form-control-danger': form.controls['short_description'].hasError('required') && form.controls['short_description'].touched}" />
+                        <input type="text" class="form-control" placeholder="Long Description" [formControl]="form.controls['long_description']" [ngClass]="{'form-control-danger': form.controls['long_description'].hasError('required') && form.controls['long_description'].touched}" />
+                        <input type="text" class="form-control" placeholder="Number Of Position" [formControl]="form.controls['number_of_position']" [ngClass]="{'form-control-danger': form.controls['number_of_position'].hasError('required') && form.controls['number_of_position'].touched}" />
+                        <br>
+                        <label>Gender</label>
+                        <label>Male
+                        <input type="radio" class="form-control" value="male" name="gender" [formControl]="form.controls['gender']" [ngClass]="{'form-control-danger': form.controls['gender'].hasError('required') && form.controls['gender'].touched}" /></label>
+                        <label>Female
+                        <input type="radio" class="form-control" value="female" name="gender" [formControl]="form.controls['gender']" [ngClass]="{'form-control-danger': form.controls['gender'].hasError('required') && form.controls['gender'].touched}" /></label>
+                        <br>
+                        <label>Gender Preferences</label>
+                        <br>
+                        <label>Male
+                                <input type="radio" class="form-control" value="male" name="gender_preferences" [formControl]="form.controls['gender_preferences']" [ngClass]="{'form-control-danger': form.controls['gender_preferences'].hasError('required') && form.controls['gender_preferences'].touched}" /></label>
+                                <label>Female
+                                <input type="radio" class="form-control" value="female" name="gender_preferences" [formControl]="form.controls['gender_preferences']" [ngClass]="{'form-control-danger': form.controls['gender_preferences'].hasError('required') && form.controls['gender_preferences'].touched}" /></label>
+                
+                        <input type="date" class="form-control" placeholder="Closing Date" [formControl]="form.controls['closing_date']" [ngClass]="{'form-control-danger': form.controls['closing_date'].hasError('required') && form.controls['closing_date'].touched}" />
+                        <input type="text" class="form-control" placeholder="Is Publish" [formControl]="form.controls['is_publish']" [ngClass]="{'form-control-danger': form.controls['is_publish'].hasError('required') && form.controls['is_publish'].touched}" />
+
+                        <input type="text" class="form-control" placeholder="Maximum Experience" [formControl]="form.controls['max_experience']" [ngClass]="{'form-control-danger': form.controls['max_experience'].hasError('required') && form.controls['max_experience'].touched}" />
+                        <input type="text" class="form-control" placeholder="Department" [formControl]="form.controls['department']" [ngClass]="{'form-control-danger': form.controls['department'].hasError('required') && form.controls['department'].touched}" />
+                        <input type="text" class="form-control" placeholder="Designation" [formControl]="form.controls['designation']" [ngClass]="{'form-control-danger': form.controls['designation'].hasError('required') && form.controls['designation'].touched}" />
+                        <input type="text" class="form-control" placeholder="Job Type ID" [formControl]="form.controls['job_type_id']" [ngClass]="{'form-control-danger': form.controls['job_type_id'].hasError('required') && form.controls['job_type_id'].touched}" />
+
+                        <div class="form-control-feedback" *ngIf="form.controls['title'].hasError('required') && form.controls['title'].touched"> Title is required.</div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button title="Close" type="button" class="btn btn-secondary" (click)="closeButton('Close click')">Close</button>
+            <button title="Create" class="btn btn-primary" type="submit" [disabled]="!form.valid">Create</button>
+        </div>
+    </form>
+</ng-template>

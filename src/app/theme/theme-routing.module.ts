@@ -18,6 +18,16 @@ const routes: Routes = [
                 "loadChildren": "./company/designation/designation.module#DesignationModule"
             },
             {
+                "path": "employees",
+                "loadChildren": "./company/employee/employee.module#EmployeeModule"
+            },
+
+            {
+                "path": "jobs",
+                "loadChildren": "./company/job/job.module#JobModule"
+            },
+            
+            {
                 "path": "angular\/ng-bootstrap",
                 "loadChildren": ".\/pages\/default\/angular\/ng-bootstrap\/ng-bootstrap.module#NgBootstrapModule"
             },

@@ -4,8 +4,6 @@ import { Headers, Http, RequestOptions, Response } from "@angular/http";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-
-
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -13,9 +11,7 @@ export class ApiService {
 
     constructor(private http: Http) { }
 
-    _get(url){
-        return this.http.get(this.getUrl(url), this.setHeaders())  
-    }
+   
     get(url) {
         return this.http.get(this.getUrl(url), this.setHeaders()).map((response: Response) => {
             let result = response.json();
@@ -83,7 +79,4 @@ export class ApiService {
         //     return true;
         // return false;
     }
-
-
-
 }

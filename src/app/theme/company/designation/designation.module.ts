@@ -4,6 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { DesignationComponent } from './designation.component';
 import { LayoutModule } from '../../layouts/layout.module';
 import { CompanyComponent } from '../company.component';
+import { DesignationService } from "../../../_services/designation.service";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
     {
@@ -19,15 +22,14 @@ const routes: Routes = [
 ];
 @NgModule({
     imports: [
-        CommonModule, RouterModule.forChild(routes), LayoutModule
+        CommonModule, NgbModule.forRoot(), RouterModule.forChild(routes), LayoutModule , FormsModule, ReactiveFormsModule
     ], exports: [
         RouterModule
     ], declarations: [
         DesignationComponent
-    ]
+    ], providers: [
+        DesignationService
+    ],
 })
 export class DesignationModule {
-
-
-
 }

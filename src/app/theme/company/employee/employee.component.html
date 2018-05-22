@@ -3,7 +3,7 @@
     <div class="d-flex align-items-center">
         <div class="mr-auto">
             <!-- <h3 class="m-subheader__title m-subheader__title--separator">
-                Department
+                Employee
             </h3> -->
             <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
                 <li class="m-nav__item m-nav__item--home">
@@ -27,7 +27,7 @@
                 <li class="m-nav__item">
                     <a href="#" class="m-nav__link">
                         <span class="m-nav__link-text">
-							Designation
+                                Employee
 						</span>
                     </a>
                 </li>
@@ -40,7 +40,7 @@
                     <span>
                         <i class="flaticon-add"></i>
                         <span>
-                            New Designation
+                            New Employee
                         </span>
                     </span>
                 </a>
@@ -56,37 +56,47 @@
             <div class="m-portlet__head-caption">
                 <div class="m-portlet__head-title">
                     <h3 class="m-portlet__head-text">
-                        List of All Designations
+                        List of All Employee
                     </h3>
                 </div>
             </div>
         </div>
         <div class="m-portlet__body">
+
             <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
                 <div class="row align-items-center">
                     <table class="table">
                         <thead>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Department</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Gender</th>
+                            <th>Email</th>
+                            <th>Salary</th>
+                            <th>ID</th>
                             <th>Actions</th>
                         </thead>
                         <tbody>
-                            <tr *ngIf="designations; let i = index">
-                                <td>{{i+1}}</td>
-                                <td>{{designations.name}}</td>
-                                <td>{{designations.department.name}}</td>
+                            <tr *ngFor="let employee of employees; let i = index">
+                                <td>{{i + 1}}</td>
+                                <td>{{employee.first_name}}</td>
+                                <td>{{employee.last_name}}</td>
+                                <td>{{employee.gender}}</td>
+                                <td>{{employee.email}}</td>
+                                <td>{{employee.salary}}</td>
+                                <td>{{employee.id}}</td>
                                 <td data-field="Actions" class="m-datatable__cell">
                                     <span style="overflow: visible; width: 110px;">			
                                         <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="View ">
                                             <i class="la la-edit"></i>
                                         </a>
-                                        <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete" (click)="destroy(designations.id)">
+                                        <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete" (click)="destroy(employee.id)">
                                             <i class="la la-trash"></i>
                                         </a>
                                     </span>
                                 </td>
                             </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -101,7 +111,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
-                        New Department
+                        New Employee
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">
@@ -131,7 +141,7 @@
 <ng-template #content let-c="close" let-d="dismiss">
     <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
         <div class="modal-header">
-            <h6 class="modal-title text-uppercase">Add New Designation</h6>
+            <h6 class="modal-title text-uppercase">Add New Employee</h6>
             <button type="button" class="close" aria-label="Close" (click)="closeX('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -139,17 +149,22 @@
         <div class="modal-body">
             <div class="row">
                 <div class="col-12">
-                    <label>Name</label>
-                    <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['name'].hasError('required') && form.controls['name'].touched}">
-                        <input type="text" class="form-control" placeholder="Designation name" [formControl]="form.controls['name']" [ngClass]="{'form-control-danger': form.controls['name'].hasError('required') && form.controls['name'].touched}" />
-                        <input type="text" class="form-control" placeholder="Designation department" [formControl]="form.controls['department']" [ngClass]="{'form-control-danger': form.controls['department'].hasError('required') && form.controls['department'].touched}" />
-                        <div class="form-control-feedback" *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched">Department name is required.</div>
+                    <label>Employee Record</label>
+                    <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['first_name'].hasError('required') && form.controls['first_name'].touched}">
+                        <input type="text" class="form-control" placeholder="Frist name" [formControl]="form.controls['first_name']" [ngClass]="{'form-control-danger': form.controls['first_name'].hasError('required') && form.controls['first_name'].touched}" />
+                        <input type="text" class="form-control" placeholder="Last name" [formControl]="form.controls['last_name']" [ngClass]="{'form-control-danger': form.controls['last_name'].hasError('required') && form.controls['last_name'].touched}" />
+                        <input type="text" class="form-control" placeholder="Gender" [formControl]="form.controls['gender']" [ngClass]="{'form-control-danger': form.controls['gender'].hasError('required') && form.controls['gender'].touched}" />
+                        <input type="text" class="form-control" placeholder="Salary" [formControl]="form.controls['salary']" [ngClass]="{'form-control-danger': form.controls['salary'].hasError('required') && form.controls['salary'].touched}" />
+                        <input type="email" class="form-control" placeholder="Email" [formControl]="form.controls['email']" [ngClass]="{'form-control-danger': form.controls['email'].hasError('required') && form.controls['email'].touched}" />
+                        <input type="password" class="form-control" placeholder="Password" [formControl]="form.controls['password']" [ngClass]="{'form-control-danger': form.controls['password'].hasError('required') && form.controls['password'].touched}" />
+                        
+
+                        
+                        <div class="form-control-feedback" *ngIf="form.controls['first_name'].hasError('required') && form.controls['first_name'].touched">Employee First name is required.</div>
                     </fieldset>
                 </div>
-                
             </div>
         </div>
-
         <div class="modal-footer">
             <button title="Close" type="button" class="btn btn-secondary" (click)="closeButton('Close click')">Close</button>
             <button title="Create" class="btn btn-primary" type="submit" [disabled]="!form.valid">Create</button>

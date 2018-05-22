@@ -14,6 +14,7 @@ import { AuthModule } from "./auth/auth.module";
     declarations: [
         ThemeComponent,
         AppComponent,
+       
     ],
     imports: [
         LayoutModule,

@@ -31,7 +31,4 @@ const routes: Routes = [
     ],
 })
 export class DepartmentModule {
-
-
-
 }
