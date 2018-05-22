@@ -111,29 +111,17 @@
                             <input type="text" class="form-control" placeholder="Designation name" [formControl]="form.controls['name']" [ngClass]="{'form-control-danger': form.controls['name'].hasError('required') && form.controls['name'].touched}" />
                             <div class="form-control-feedback" *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched">Designation name is required.</div>
                         </fieldset>
-                        <!-- <label>Department <small class="text-red">*</small></label>
-                        <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['department_id'].hasError('required') && form.controls['department_id'].touched}">
-                            <select class="form-control" id="exampleSelect2" [formControl]="form.controls['department_id']" [ngClass]="{'has-danger': form.controls['department_id'].hasError('required') && form.controls['department_id'].touched}">
-                            <option disabled selected [value]=noVal>Select Department</option>
-                            <option *ngFor="let department of departments" value="{{department.id}}" >{{department.name}}</option>
-                          </select>
-                            <div class="form-control-feedback" *ngIf="form.controls['department_id'].hasError('required') && form.controls['department_id'].touched">Department is required.</div>
-                        </fieldset> -->
                     </div>
                     <div class="col-12">
-                        <label>Department</label>
-                        <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['department'].hasError('required') && form.controls['department'].touched}">
-                            <input type="text" class="form-control" placeholder="Department department" [formControl]="form.controls['department']" [ngClass]="{'form-control-danger': form.controls['department'].hasError('required') && form.controls['department'].touched}" />
-                            <div class="form-control-feedback" *ngIf="form.controls['department'].hasError('required') && form.controls['department'].touched">Designation name is required.</div>
-                        </fieldset>
-                        <!-- <label>Department <small class="text-red">*</small></label>
-                        <fieldset class="form-group" [ngClass]="{'has-danger': form.controls['department_id'].hasError('required') && form.controls['department_id'].touched}">
-                            <select class="form-control" id="exampleSelect2" [formControl]="form.controls['department_id']" [ngClass]="{'has-danger': form.controls['department_id'].hasError('required') && form.controls['department_id'].touched}">
-                            <option disabled selected [value]=noVal>Select Department</option>
-                            <option *ngFor="let department of departments" value="{{department.id}}" >{{department.name}}</option>
-                          </select>
-                            <div class="form-control-feedback" *ngIf="form.controls['department_id'].hasError('required') && form.controls['department_id'].touched">Department is required.</div>
-                        </fieldset> -->
+                        <div class="form-group m-form__group">
+                            <label for="exampleSelect1">
+                                Department
+                            </label>
+                            <select class="form-control m-input m-input--air" id="exampleSelect2" [formControl]="form.controls['department']" [ngClass]="{'has-danger': form.controls['department'].hasError('required') && form.controls['department'].touched}">
+                                <option disabled selected [value]=noVal>Select Department</option>
+                                <option *ngFor="let department of departments" value="{{department.id}}" >{{department.name}}</option>
+                            </select>
+                        </div>
                     </div>
 
                 </div>
