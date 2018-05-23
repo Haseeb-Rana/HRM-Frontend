@@ -5,5 +5,5 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:1337/v1/company'
+    apiUrl: 'http://api.hrduty.com/v1/company'
 };
