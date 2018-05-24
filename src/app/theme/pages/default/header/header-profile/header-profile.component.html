@@ -87,10 +87,10 @@
 						</div>
 						<div class="m-card-profile__details">
 							<span class="m-card-profile__name">
-								Mark Andre
+								{{currentUser.first_name}} {{currentUser.last_name}}
 							</span>
 							<a href="" class="m-card-profile__email m-link">
-								mark.andre@gmail.com
+								{{currentUser.email}}
 							</a>
 						</div>
 					</div>
@@ -320,8 +320,8 @@
 				</div>
 				<div class="tab-content">
 					<div class="tab-pane active" id="m_user_profile_tab_1">
-						<form class="m-form m-form--fit m-form--label-align-right">
-							<div class="m-portlet__body">
+						<form class="m-form m-form--fit m-form--label-align-right" (ngSubmit)="onSave($event)">
+							<div class="m-portlet__body" ng-value="let currentUser">
 								<div class="form-group m-form__group m--margin-top-10 m--hide">
 									<div class="alert m-alert m-alert--default" role="alert">
 										The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
@@ -336,26 +336,27 @@
 								</div>
 								<div class="form-group m-form__group row">
 									<label for="example-text-input" class="col-2 col-form-label">
-										Full Name
+										First Name
 									</label>
+								
 									<div class="col-7">
-										<input class="form-control m-input" type="text" value="Mark Andre">
+										<input class="form-control m-input" type="text" value= {{currentUser.first_name}} [formControl]="form.controls['first_name']" [ngClass]="{'form-control-danger': form.controls['first_name'].hasError('required') && form.controls['first_name'].touched}" />
 									</div>
 								</div>
 								<div class="form-group m-form__group row">
 									<label for="example-text-input" class="col-2 col-form-label">
-										Occupation
+										Last Name
 									</label>
 									<div class="col-7">
-										<input class="form-control m-input" type="text" value="CTO">
+										<input class="form-control m-input" type="text" value= {{currentUser.last_name}}>
 									</div>
 								</div>
 								<div class="form-group m-form__group row">
 									<label for="example-text-input" class="col-2 col-form-label">
-										Company Name
+										Gender
 									</label>
 									<div class="col-7">
-										<input class="form-control m-input" type="text" value="Keenthemes">
+										<input class="form-control m-input" type="text" value= {{currentUser.gender}}>
 										<span class="m-form__help">
 											If you want your invoices addressed to a company. Leave blank to use your full name.
 										</span>
@@ -363,10 +364,10 @@
 								</div>
 								<div class="form-group m-form__group row">
 									<label for="example-text-input" class="col-2 col-form-label">
-										Phone No.
+										Company
 									</label>
 									<div class="col-7">
-										<input class="form-control m-input" type="text" value="+456669067890">
+										<input class="form-control m-input" type="text" value= {{currentUser.company.name}}>
 									</div>
 								</div>
 								<div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
@@ -455,7 +456,7 @@
 									<div class="row">
 										<div class="col-2"></div>
 										<div class="col-7">
-											<button type="reset" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+											<button type="submit" class="btn btn-accent m-btn m-btn--air m-btn--custom" (click) = "onSave($event)">
 												Save changes
 											</button>
 											&nbsp;&nbsp;
