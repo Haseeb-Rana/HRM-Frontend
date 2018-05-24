@@ -5,6 +5,8 @@ import { JobComponent } from './job.component';
 import { LayoutModule } from '../../layouts/layout.module';
 import { CompanyComponent } from '../company.component';
 import { JobService } from "../../../_services/job.service";
+import { DesignationService } from "../../../_services/designation.service";
+import { DepartmentService } from "../../../_services/department.service";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 const routes: Routes = [
@@ -27,7 +29,9 @@ const routes: Routes = [
     ], declarations: [
         JobComponent
     ],providers: [
-        JobService
+        JobService,
+        DesignationService,
+        DepartmentService
     ],
 })
 export class JobModule {

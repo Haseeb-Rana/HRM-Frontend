@@ -3,9 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Helpers } from '../../../helpers';
 import { JobService } from "../../../_services/job.service";
-// import { ApiService } from "../../../_services/api.service";
-
-// import { Department } from "../../../_models/index";
+import { DesignationService } from "../../../_services/designation.service";
+import { DepartmentService } from "../../../_services/department.service";
 
 
 @Component({
@@ -17,32 +16,37 @@ export class JobComponent implements OnInit {
 
     public jobs: any;
     modaal:any;
+    public noVal = null;
+    public designations: any = [];
+    public departments: any = [];
 
     public form: FormGroup;
     public editForm: FormGroup;
     
     constructor(
-        private _jobService: JobService, 
+        private _departmentService: DepartmentService, private _designationService: DesignationService, private _jobService: JobService, 
         // private _apiService: ApiService,
         private fb: FormBuilder,
         private modalService: NgbModal
     ) {
         // this._apiService.isAdmin();
+        this.loadAllDepartments();
+        this.loadAllDesignations();
     }
     ngOnInit() {
         this.form = this.fb.group ( {
             //name:               [null , Validators.compose ( [ Validators.required ] )],
             title:              [null , Validators.compose ( [ Validators.required ] )],
-            short_description:  [null , Validators.compose ( [ Validators.required ] )],
+            // short_description:  [null , Validators.compose ( [ Validators.required ] )],
             long_description:   [null , Validators.compose ( [ Validators.required ] )],
             number_of_position: [null , Validators.compose ( [ Validators.required ] )],
-            gender:             [null , Validators.compose ( [ Validators.required ] )],
+            // gender:             [null , Validators.compose ( [ Validators.required ] )],
             closing_date:       [null , Validators.compose ( [ Validators.required ] )],
-            is_publish:         [null , Validators.compose ( [ Validators.required ] )],
+            // is_publish:         [null , Validators.compose ( [ Validators.required ] )],
             max_experience:     [null , Validators.compose ( [ Validators.required ] )],
             department:         [null , Validators.compose ( [ Validators.required ] )],
             designation:        [null , Validators.compose ( [ Validators.required ] )],
-            job_type_id :       [null , Validators.compose ( [ Validators.required ] )],
+            // job_type_id :       [null , Validators.compose ( [ Validators.required ] )],
             gender_preferences:  [null , Validators.compose ( [ Validators.required ] )],
         });
         this.editForm = this.fb.group ( {
@@ -52,6 +56,19 @@ export class JobComponent implements OnInit {
         this.loadAllJobs();
     }
 
+    loadAllDepartments(){
+        this._departmentService.list().subscribe(departments => {
+            if(departments.success)
+                this.departments = departments.data;
+        });
+    }
+
+    loadAllDesignations(){
+        this._designationService.list().subscribe(designations => {
+            if(designations.success)
+                this.designations = designations.data;
+        });
+    }
     loadAllJobs(){
         this._jobService.list().subscribe(jobs => {
             if(jobs.success)
@@ -94,7 +111,7 @@ export class JobComponent implements OnInit {
             max_experience:         this.form.value.max_experience,
             department:             this.form.value.department,
             designation:            this.form.value.designation,
-            job_type_id :           this.form.value.job_type_id,
+            // job_type_id :           this.form.value.job_type_id,
             gender_preferences:     this.form.value.gender_preferences
 
         };

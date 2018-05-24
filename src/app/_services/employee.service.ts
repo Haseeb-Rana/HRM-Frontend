@@ -7,18 +7,18 @@ export class EmployeeService {
 
   list(){
     return this.http.get('/employees');
-}
+    }
 
-create(department){
-    return this.http.post('/employees', department);
-}
+    create(employee){
+        return this.http.post('/employees', employee);
+    }
 
-update(department, id){
-    return this.http.put('/employees/' + id, department);
-}
+    update(employee){
+        return this.http.put('/employees/', employee);
+    }
 
-destroy(id){
-    return this.http.destroy('/employees/' + id);
-}
+    destroy(id){
+        return this.http.destroy('/employees/' + id);
+    }
 
 }
