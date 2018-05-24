@@ -65,23 +65,23 @@ export class HeaderProfileComponent implements OnInit {
 
         console.log(employee);
 
-        this._employeeService.update(employee).subscribe(result =>{
-            let response = result.json();
-            if(response.success){
-                // this.notify.successNotify(response.message);
-                this.modaal.close();
-                this.form.reset();
+        // this._employeeService.update(employee).subscribe(result =>{
+        //     let response = result.json();
+        //     if(response.success){
+        //         // this.notify.successNotify(response.message);
+        //         this.modaal.close();
+        //         this.form.reset();
                 
-            }
-            else if(!response.success) {
-                for(let i=0;i<response.errors.length;i++){
+        //     }
+        //     else if(!response.success) {
+        //         for(let i=0;i<response.errors.length;i++){
                     
-                }
-            }
-        }, err => {
-            err = err.json();
+        //         }
+        //     }
+        // }, err => {
+        //     err = err.json();
             
-        });
+        // });
         
     }
 
