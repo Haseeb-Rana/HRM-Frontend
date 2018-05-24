@@ -5,6 +5,11 @@ import { IndexComponent } from './index.component';
 import { LayoutModule } from '../../../layouts/layout.module';
 import { DefaultComponent } from '../default.component';
 import { UserService } from "../../../../_services/user.service";
+import { JobService } from "../../../../_services/job.service";
+import { DesignationService } from "../../../../_services/designation.service";
+import { DepartmentService } from "../../../../_services/department.service";
+import { EmployeeService } from "../../../../_services/employee.service";
+
 const routes: Routes = [
     {
         "path": "",
@@ -24,7 +29,12 @@ const routes: Routes = [
         RouterModule
     ], declarations: [
         IndexComponent
-    ]
+    ],providers: [
+        JobService,
+        DesignationService,
+        DepartmentService,
+        EmployeeService
+    ],
 })
 export class IndexModule {
 

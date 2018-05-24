@@ -9,9 +9,9 @@ declare let mLayout: any;
 })
 export class AsideNavComponent implements OnInit, AfterViewInit {
 
-
+    public isAdmin: boolean;
     constructor() {
-
+        this.isAdmin = false;
     }
     ngOnInit() {
 
