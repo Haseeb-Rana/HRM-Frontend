@@ -7,6 +7,7 @@ import { CompanyComponent } from '../company.component';
 import { DepartmentService } from "../../../_services/department.service";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ApiService } from "../../../_services/api.service";
 const routes: Routes = [
     {
         "path": "",

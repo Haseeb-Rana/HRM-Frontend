@@ -5,6 +5,8 @@ import { Helpers } from '../../../helpers';
 import { EmployeeService } from "../../../_services/employee.service";
 import { DesignationService } from "../../../_services/designation.service";
 import { DepartmentService } from "../../../_services/department.service";
+import { ApiService } from "../../../_services/api.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 
 @Component({
@@ -13,7 +15,7 @@ import { DepartmentService } from "../../../_services/department.service";
     encapsulation: ViewEncapsulation.None,
 })
 export class EmployeeComponent implements OnInit {
-
+    public currentUser: any;
     public employees: any;
     modaal:any;
     public noVal = null;
@@ -22,11 +24,18 @@ export class EmployeeComponent implements OnInit {
     public form: FormGroup;
     public editForm: FormGroup;
     constructor(
-        private _employeeService: EmployeeService, private _departmentService: DepartmentService, private _designationService: DesignationService,
+        private _employeeService: EmployeeService,
+         private _departmentService: DepartmentService,
+          private _designationService: DesignationService,
+          private _apiService: ApiService,
+        private _router: Router,
         // private _apiService: ApiService,
         private fb: FormBuilder,
         private modalService: NgbModal
     ) {
+        this.currentUser = this._apiService.getCurrentUser()
+        if(this.currentUser.createdBy)
+        this._router.navigate(['index']);
         // this._apiService.isAdmin();
         this.loadAllDepartments();
         this.loadAllDesignations();

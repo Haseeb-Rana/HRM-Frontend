@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Helpers } from '../../../helpers';
 import { DepartmentService } from "../../../_services/department.service";
+import { ApiService } from "../../../_services/api.service";
+import { ActivatedRoute, Router } from "@angular/router";
 // import { ApiService } from "../../../_services/api.service";
 
 // import { Department } from "../../../_models/index";
@@ -20,14 +22,20 @@ export class DepartmentComponent implements OnInit {
 
     public form: FormGroup;
     public editForm: FormGroup;
+    public currentUser: any;
     
     constructor(
-        private _departmentService: DepartmentService, 
+        private _departmentService: DepartmentService,
+        private _apiService: ApiService,
+        private _router: Router, 
         // private _apiService: ApiService,
         private fb: FormBuilder,
         private modalService: NgbModal
     ) {
         // this._apiService.isAdmin();
+        this.currentUser = this._apiService.getCurrentUser()
+        if(this.currentUser.createdBy)
+        this._router.navigate(['index']);
     }
     ngOnInit() {
         this.form = this.fb.group ( {
@@ -47,7 +55,7 @@ export class DepartmentComponent implements OnInit {
     }
 
     open(content) {
-        this.form.value.name = "Faizan"
+        this.form.value.name = "Haseeb Rana"
         this.modaal = this.modalService.open(content);
     }
 

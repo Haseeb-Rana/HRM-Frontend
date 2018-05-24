@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Helpers } from '../../../helpers';
 import { DesignationService } from "../../../_services/designation.service";
 import { DepartmentService } from "../../../_services/department.service";
+import { ApiService } from "../../../_services/api.service";
+import { ActivatedRoute, Router } from "@angular/router";
+
 
 import { Department } from '../../../_models/department';
 
@@ -21,10 +24,19 @@ export class DesignationComponent implements OnInit {
     public editForm: FormGroup;
     public departments: any = [];
     public noVal = null;
+    public currentUser: any;
 
-    constructor(private _departmentService: DepartmentService, private _designationService: DesignationService,
+    constructor(private _departmentService: DepartmentService,
+         private _designationService: DesignationService,
+          private _apiService: ApiService,
         private fb: FormBuilder,
-        private modalService: NgbModal) {
+        private modalService: NgbModal,
+    private _router: Router) {
+            this.currentUser = this._apiService.getCurrentUser();
+            
+            
+            if(this.currentUser.createdBy)
+            this._router.navigate(['index']);
 
     }
     ngOnInit() {

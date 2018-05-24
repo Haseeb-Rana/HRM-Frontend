@@ -8,6 +8,7 @@ import { EmployeeService } from "../../../_services/employee.service";
 import { DesignationService } from "../../../_services/designation.service";
 import { DepartmentService } from "../../../_services/department.service";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ApiService } from "../../../_services/api.service";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 const routes: Routes = [
     {
